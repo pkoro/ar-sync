@@ -37,14 +37,6 @@ install --directory %{buildroot}/%{_libexecdir}/argo-egi-connectors/
 rm -rf $RPM_BUILD_ROOT
 
 %files -f INSTALLED_FILES
-%attr(0755,root,root) %dir %{_libexecdir}/argo-egi-connectors/
-%attr(0755,root,root) %{_libexecdir}/argo-egi-connectors/*.py*
-
-%attr(0644,root,root) %{_sysconfdir}/cron.d/*
-
-%attr(0750,root,root) %dir %{_sharedstatedir}/argo-connectors/
-%attr(0750,root,root) %dir %{_sharedstatedir}/argo-connectors/EGI
-%attr(0750,root,root) %dir %{_localstatedir}/log/argo-egi-connectors/
 
 %changelog
 * Fri Apr 3 2015 Daniel Vrcic <dvrcic@srce.hr> - 1.4.0-8%(?dist)
