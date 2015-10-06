@@ -1,6 +1,6 @@
 Name: argo-egi-connectors
 Version: 1.4.4
-Release: 2%{?dist}
+Release: 3%{?dist}
 
 Group: EGI/SA4
 License: ASL 2.0
@@ -46,7 +46,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(0750,root,root) %dir %{_localstatedir}/log/argo-egi-connectors/
 
 %changelog
-* Fri Oct 6 2015 Daniel Vrcic <dvrcic@srce.hr> - 1.4.4-2%{?dist}
+* Tue Oct 6 2015 Paschalis Korosoglou <pkoro@grid.auth.gr> - 1.4.4-3%{?dist}
+- get scopes per customer (not globally)
+* Tue Oct 6 2015 Daniel Vrcic <dvrcic@srce.hr> - 1.4.4-2%{?dist}
 - fix initialization of loggers in config parsers
 - backward compatible exception messages
 * Fri Oct 2 2015 Daniel Vrcic <dvrcic@srce.hr> - 1.4.4-1%{?dist}

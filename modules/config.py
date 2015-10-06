@@ -304,22 +304,22 @@ class CustomerConf:
             feeds[feedurl] = []
             feeds[feedurl].append((job, cust))
 
-    def get_allspec_scopes(self, caller, name=None):
-        distinct_scopes = set()
+    def get_customer_scopes(self, caller, customer, name=None):
+        cscopes = set()
         ggtags, getags = [], []
-        for c in self.get_customers():
-            for job in self.get_jobs(c):
-                if self._get_toponame(job) == name:
-                    gg = self._get_tags(job, 'TopoSelectGroupOfGroups')
-                    ge = self._get_tags(job, 'TopoSelectGroupOfEndpoints')
-                    for g in gg.items() + ge.items():
-                        if 'Scope'.lower() == g[0].lower():
-                            if isinstance(g[1], list):
-                                distinct_scopes.update(g[1])
-                            else:
-                                distinct_scopes.update([g[1]])
+        c = customer
+        for job in self.get_jobs(c):
+            if self._get_toponame(job) == name:
+                gg = self._get_tags(job, 'TopoSelectGroupOfGroups')
+                ge = self._get_tags(job, 'TopoSelectGroupOfEndpoints')
+                for g in gg.items() + ge.items():
+                    if 'Scope'.lower() == g[0].lower():
+                        if isinstance(g[1], list):
+                            cscopes.update(g[1])
+                        else:
+                            cscopes.update([g[1]])
 
-        return distinct_scopes
+        return cscopes
 
     def get_mapfeedjobs(self, caller, name=None, deffeed=None):
         feeds = {}

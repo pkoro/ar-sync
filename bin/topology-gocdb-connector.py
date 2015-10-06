@@ -296,12 +296,12 @@ def main():
     confcust = CustomerConf(sys.argv[0])
     confcust.parse()
     confcust.make_dirstruct()
-    scopes = confcust.get_allspec_scopes(sys.argv[0], 'GOCDB')
     feeds = confcust.get_mapfeedjobs(sys.argv[0], 'GOCDB', deffeed='https://goc.egi.eu/gocdbpi/')
 
     timestamp = datetime.datetime.utcnow().strftime('%Y_%m_%d')
 
     for feed, jobcust in feeds.items():
+        scopes = confcust.get_customer_scopes(sys.argv[0], jobcust[0][1] , 'GOCDB' )
         gocdb = GOCDBReader(feed, scopes)
 
         for job, cust in jobcust:
